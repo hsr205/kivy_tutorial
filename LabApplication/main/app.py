@@ -1,4 +1,11 @@
 from kivy.app import App
+from kivy.uix.widget import Widget
+
+
+class LabWidget(Widget):
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 
 class LabApp(App):
@@ -11,7 +18,8 @@ def main() -> int:
     try:
 
         lab_app: LabApp = LabApp()
-        lab_app.get_running_app()
+        lab_widget: LabWidget = LabWidget()
+
         lab_app.run()
 
     except Exception as e:
