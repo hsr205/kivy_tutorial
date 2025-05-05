@@ -8,8 +8,15 @@ class LabApp(App):
 
 
 def main() -> int:
-    lab_app: LabApp = LabApp()
-    lab_app.get_running_app()
+    try:
+
+        lab_app: LabApp = LabApp()
+        lab_app.get_running_app()
+        lab_app.run()
+
+    except Exception as e:
+        print(f"Exception Thrown: {e}")
+        return 1
 
     return 0
 
