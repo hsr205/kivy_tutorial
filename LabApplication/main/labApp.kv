@@ -1,7 +1,124 @@
-LabWidget:
+LabCounterGridLayout:
+
+<LabCounterGridLayout>:
+    cols: 2
+    rows: 2
+    Button:
+        text: "Click me to increment the counter"
+        on_press: root.increment_counter()
+    Label:
+        text: f"Counter {root.counter_int}"
+        font_name: "../resources/1_THE_LAB/RESOURCES/fonts/Lcd.ttf"
+        font_size: "20sp"
+    Button:
+        text: "Click me get a random value"
+        on_press: root.get_random_float_value()
+    Label:
+        text: f"Counter {round(root.random_float, 2)}"
+        font_name: "../resources/1_THE_LAB/RESOURCES/fonts/Lcd.ttf"
+        font_size: "20sp"
+
+# <LabPageLayout@PageLayout>:
+    # LabWidget:
+    # LabBoxLayout:
+    # LabAnchorLayout:
+
+# <LabScrollView@ScrollView>:
+    # LabStackLayout:
+        # size_hint: 1, None
+        #  height: self.minimum_height
+
+# <LabStackLayout>:
+    # Button:
+      #   text: "A"
+      #   size_hint: .2, .1
+    # Button:
+      #   text: "B"
+      #   size_hint: .2, .1
+    # Button:
+      #   text: "C"
+      #   size_hint: .2, .1
+
+<LabGridLayout@GridLayout>:
+    # cols: 3
+    rows: 2
+    Button:
+        text: "This is button 1"
+        size_hint: .2, .1
+    LabBoxLayout:
+    Button:
+        text: "This is button 3"
+    Button:
+        text: "This is button 4"
+    Button:
+        text: "This is button 5"
+    Button:
+        text: "This is button 6"
+
+<LabAnchorLayout>:
+
+    anchor_x: "center"
+    anchor_y: "top"
+
     BoxLayout:
-        cols:1
-        rows:1
-        spacing: 10
+        size_hint: .25, .1
+        orientation: "vertical"
         Button:
+            text: "This is button 1"
         Button:
+            text: "This is button 1"
+
+
+<LabBoxLayout>:
+    orientation: "horizontal"
+    Button:
+        text:
+            "This is button 1"
+        # size: "200sp", "50sp"
+        # pos: "100dp", "100dp"
+        size_hint: .5, None
+        width: "50sp"
+        pos_hint: {"center_y": .5}
+        color: 0, 0, 1, 1
+        background_color: 1, 0, 0, 1
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "100sp"
+        Button:
+            text:
+                "This is button 2"
+            size_hint: .8, 2.
+            color: 1, 0, 0, 1
+            background_color: 0, 0, 1, 1
+        Button:
+            text:
+                "This is button 3"
+            size_hint: .8, 2.
+            color: 1, 0, 0, 1
+            background_color: 0, 0, 1, 1
+        Button:
+            text:
+                "This is button 4"
+            size_hint: .8, 2.
+            color: 1, 0, 0, 1
+            background_color: 0, 0, 1, 1
+        Button:
+            text:
+                "This is button 5"
+            size_hint: .8, 2.
+            color: 1, 0, 0, 1
+            background_color: 0, 0, 1, 1
+
+<LabWidget>:
+    Button:
+        text:
+            "This is button 1"
+        size: "200sp", "50sp"
+        pos: "100dp", "100dp"
+        color: 0, 0, 1, 1
+    Label:
+        text:
+            "This is button 2"
+        size: "200sp", "50sp"
+        pos: "200dp", "200dp"
+        color: 1, 0, 0, 1
