@@ -1,22 +1,62 @@
 LabCounterGridLayout:
 
 <LabCounterGridLayout>:
-    cols: 2
+    cols: 3
     rows: 2
+
+    ToggleButton:
+        text: root.state_str
+        on_state: root.execute_toggle_button_behaviour(self)
+        size_hint: None, 1
+        width: "100sp"
+
+    # Label:
+      #   text: root.state_str
+      #   font_name: "../resources/1_THE_LAB/RESOURCES/fonts/Lcd.ttf"
+      #   font_size: "20sp"
+      #   color: 1, .5, .25, 1
+
     Button:
         text: "Click me to increment the counter"
         on_press: root.increment_counter()
+        disabled: root.enable_button
     Label:
-        text: f"Counter {root.counter_int}"
+        text: f"Counter: {root.counter_int}"
+        font_name: "../resources/1_THE_LAB/RESOURCES/fonts/Lcd.ttf"
+        font_size: "60sp"
+        color: 1, .5, .25, 1
+
+    Switch:
+        on_active: root.on_switch_active(self)
+        size_hint: None, 1
+        width: "100sp"
+
+
+    Slider:
+        id: slider
+        min: 0
+        max: 100
+        step: 1
+        value_track: True
+        orientation: "horizontal"
+        disabled: root.enable_slider
+
+    Label:
+        text: f"Slider Counter: {slider.value}"
         font_name: "../resources/1_THE_LAB/RESOURCES/fonts/Lcd.ttf"
         font_size: "20sp"
-    Button:
-        text: "Click me get a random value"
-        on_press: root.get_random_float_value()
-    Label:
-        text: f"Counter {round(root.random_float, 2)}"
-        font_name: "../resources/1_THE_LAB/RESOURCES/fonts/Lcd.ttf"
-        font_size: "20sp"
+        color: 1, .5, .25, 1
+
+    # Button:
+      #   text: "Click me get a random value"
+      #   on_press: root.get_random_float_value()
+    # Label:
+      #   text: f"Counter {round(root.random_float, 2)}"
+      #   font_name: "../resources/1_THE_LAB/RESOURCES/fonts/Lcd.ttf"
+      #   font_size: "60sp"
+      #   color: 1, .5, .25, 1
+
+
 
 # <LabPageLayout@PageLayout>:
     # LabWidget:
