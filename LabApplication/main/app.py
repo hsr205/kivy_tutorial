@@ -1,10 +1,28 @@
+import random
+
 from kivy.app import App
 from kivy.metrics import sp
+from kivy.properties import NumericProperty
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.stacklayout import StackLayout
 from kivy.uix.widget import Widget
+
+
+class LabCounterGridLayout(GridLayout):
+    counter_int: NumericProperty = NumericProperty(1)
+    random_float: NumericProperty = NumericProperty(1.0)
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def increment_counter(self) -> None:
+        self.counter_int += 1
+
+    def get_random_float_value(self) -> None:
+        self.random_float = random.random()
 
 
 class LabStackLayout(StackLayout):
