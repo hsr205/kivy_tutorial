@@ -8,17 +8,24 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.stacklayout import StackLayout
-from kivy.uix.switch import Switch
+from kivy.uix.textinput import TextInput
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.widget import Widget
 
 
+class LabImages(GridLayout):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
 class LabCounterGridLayout(GridLayout):
     counter_int: NumericProperty = NumericProperty(1)
+    slider_value: NumericProperty = NumericProperty(0.0)
     random_float: NumericProperty = NumericProperty(1.0)
     state_str: StringProperty = StringProperty("OFF")
+    validated_input_text_str: StringProperty = StringProperty("foo")
+
     enable_button: BooleanProperty = BooleanProperty(True)
-    enable_slider: BooleanProperty = BooleanProperty(True)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -38,11 +45,8 @@ class LabCounterGridLayout(GridLayout):
             self.state_str = "OFF"
             self.enable_button = True
 
-    def on_switch_active(self, switch_widget: Switch) -> None:
-        if switch_widget.active:
-            self.enable_slider = False
-        else:
-            self.enable_slider = True
+    def on_text_validate(self, text_input: TextInput) -> None:
+        self.validated_input_text_str = text_input.text
 
 
 class LabStackLayout(StackLayout):

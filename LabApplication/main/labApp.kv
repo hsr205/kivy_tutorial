@@ -1,8 +1,21 @@
-LabCounterGridLayout:
+LabImages:
+
+<LabImages>:
+    cols: 3
+    rows: 1
+    Image:
+        source: "../resources/1_THE_LAB/RESOURCES/images/cake.jpg"
+        size: self.texture.size
+    Image:
+        source: "../resources/1_THE_LAB/RESOURCES/images/lab_logo.png"
+        size: self.texture.size
+    Image:
+        source: "../resources/1_THE_LAB/RESOURCES/images/lab_separator.png"
+        size: self.texture.size
 
 <LabCounterGridLayout>:
     cols: 3
-    rows: 2
+    rows: 3
 
     ToggleButton:
         text: root.state_str
@@ -27,25 +40,50 @@ LabCounterGridLayout:
         color: 1, .5, .25, 1
 
     Switch:
-        on_active: root.on_switch_active(self)
+        id: switch
+        active: True
         size_hint: None, 1
         width: "100sp"
-
 
     Slider:
         id: slider
         min: 0
+        value: 50
         max: 100
         step: 1
         value_track: True
         orientation: "horizontal"
-        disabled: root.enable_slider
+        disabled: not switch.active
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: f"Slider Value: {int(slider.value)}"
+            font_name: "../resources/1_THE_LAB/RESOURCES/fonts/Lcd.ttf"
+            font_size: "20sp"
+            color: 1, .5, .25, 1
+        ProgressBar:
+            id: progress_bar
+            max: 100
+            size_hint: None, 1
+            width: "300sp"
+            value: int(slider.value)
+
+    TextInput:
+        id: user_input_text
+        text: "foo"
+        multiline: False
+        size_hint: None, 1
+        width: "100sp"
+        on_text_validate: root.on_text_validate(self)
 
     Label:
-        text: f"Slider Counter: {slider.value}"
+        text: root.validated_input_text_str
         font_name: "../resources/1_THE_LAB/RESOURCES/fonts/Lcd.ttf"
         font_size: "20sp"
         color: 1, .5, .25, 1
+        # size_hint: None, 1
+        # width: "100sp"
+
 
     # Button:
       #   text: "Click me get a random value"
